@@ -1,23 +1,35 @@
 import { useState } from 'react';
-import { useAuth } from '../../contexts/auth';
 import { useNavigate } from 'react-router-dom';
+
+import { useAuth } from '../../contexts/auth';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
+import { REGISTER } from '../../router/consts';
+
 import './LoginForm.css';
 
 const LoginForm = () => {
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const auth = useAuth();
+    const {login} = useAuth();
 
-    const handleLogin = (e) => {
+    const loginHandler = (e) => {
         e.preventDefault();
-        auth.value.login(emailAddress, password);
-        navigate("/");
+        login(emailAddress, password);
     }
 
-    const handleRegister = (e) => {
+    const registerOnClickHandler = (e) => {
         e.preventDefault();
-        navigate("/register");
+        navigate(REGISTER);
+    }
+
+    const emailAddressOnChangeHandler = (e) => {
+        setEmailAddress(e.target.value)
+    }
+
+    const passwordOnChangeHandler = (e) => {
+        setPassword(e.target.value)
     }
 
     return (
@@ -26,25 +38,15 @@ const LoginForm = () => {
                 <h4>Sign In</h4>
             </div>
             <div className="login-form">
-                <form onSubmit={handleLogin}>
-                    <div className="input-container">
-                        <label>Email Address </label>
-                        <input type="email" name="uname" required onChange={(e) => setEmailAddress(e.target.value)} />
-                    </div>
-                    <div className="input-container">
-                        <label>Password </label>
-                        <input type="password" name="pass" required onChange={(e) => setPassword(e.target.value)} />
-                    </div>
-                    <div className="button-container">
-                        <input className="button-signIn" type="submit" value="Sign In" />
-                    </div>
+                <form onSubmit={loginHandler}>
+                    <Input label="Email Address" type="email" required={true} onChangeHandler={emailAddressOnChangeHandler}/>
+                    <Input label="Password" type="password" required={true} onChangeHandler={passwordOnChangeHandler}/>
+                    <Button className="button-signIn" value="Sign In" />
                 </form>
             </div>
             <div className="signUp-container">
                 <i className="signUp-text">Or Sign Up using</i>
-                <div className="button-container">
-                    <input className="button-signUp" type="submit" value="Sign Up" onClick={handleRegister} />
-                </div>
+                <Button className="button-signUp" value="Sign Up" onClickHandler={registerOnClickHandler} />
             </div>
         </div>
     );

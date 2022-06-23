@@ -1,4 +1,5 @@
 import { useMemo, createContext, useContext } from 'react'
+
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const AuthContext = createContext(null);
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     );
 
     return (
-        <AuthContext.Provider value={{value}}>
+        <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     )

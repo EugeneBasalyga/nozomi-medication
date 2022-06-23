@@ -1,17 +1,31 @@
 import { useState } from 'react';
-import { useAuth } from '../../contexts/auth';
 import { useNavigate } from 'react-router-dom';
+
+import { useAuth } from '../../contexts/auth';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
+
 import './RegisterForm.css';
 
 const RegisterForm = () => {
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
-    const navigate = useNavigate();
-    const auth = useAuth();
 
-    const handleRegister = (e) => {
+    const registerHandler = (e) => {
 
+    }
+
+    const emailAddressOnChangeHandler = (e) => {
+        setEmailAddress(e.target.value)
+    }
+
+    const passwordOnChangeHandler = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const repeatPasswordOnChangeHandler = (e) => {
+        setRepeatPassword(e.target.value)
     }
 
     return (
@@ -20,22 +34,11 @@ const RegisterForm = () => {
                 <h4>Sign Up</h4>
             </div>
             <div className="register-form">
-                <form onSubmit={handleRegister}>
-                    <div className="input-container">
-                        <label>Email Address </label>
-                        <input type="email" name="uname" required onChange={(e) => setEmailAddress(e.target.value)} />
-                    </div>
-                    <div className="input-container">
-                        <label>Password </label>
-                        <input type="password" name="pass" required onChange={(e) => setPassword(e.target.value)} />
-                    </div>
-                    <div className="input-container">
-                        <label>Repeat password </label>
-                        <input type="password" name="pass" required onChange={(e) => setRepeatPassword(e.target.value)} />
-                    </div>
-                    <div className="button-container">
-                        <input className="button-signUp" type="submit" value="Sign Up" />
-                    </div>
+                <form onSubmit={registerHandler}>
+                    <Input label="Email Address" type="email" required={true} onChangeHandler={emailAddressOnChangeHandler}/>
+                    <Input label="Password" type="password" required={true} onChangeHandler={passwordOnChangeHandler}/>
+                    <Input label="Repeat password" type="password" required={true} onChangeHandler={repeatPasswordOnChangeHandler}/>
+                    <Button className="button-signUp" value="Sign Up" />
                 </form>
             </div>
         </div>

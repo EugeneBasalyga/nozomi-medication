@@ -22,22 +22,6 @@
     justify-content: center;
 }
 
-input[type="email"],
-input[type="password"] {
-    height: 25px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.button-signUp {
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 15px;
-    background: #093dcc;
-    border: 1px solid #093dcc;
-    color: #fff;
-    padding: 10px 20px;
-}
-
 .register-title {
     font-size: calc(10px + 2vmin);
 }
