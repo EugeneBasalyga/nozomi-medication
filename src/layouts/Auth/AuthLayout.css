@@ -1,0 +1,11 @@
+.authLayout {
+    text-align: center;
+    background-color: #2b3344;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 2vmin;
+}

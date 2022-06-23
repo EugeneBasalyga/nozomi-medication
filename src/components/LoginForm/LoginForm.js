@@ -1,18 +1,23 @@
 import { useState } from 'react';
-import { useAuth } from './auth';
+import { useAuth } from '../../contexts/auth';
 import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 
 const LoginForm = () => {
-    const [userName, setUserName] = useState('');
+    const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const auth = useAuth();
 
     const handleLogin = (e) => {
         e.preventDefault();
-        auth.value.login(userName, password);
+        auth.value.login(emailAddress, password);
         navigate("/");
+    }
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        navigate("/register");
     }
 
     return (
@@ -23,17 +28,23 @@ const LoginForm = () => {
             <div className="login-form">
                 <form onSubmit={handleLogin}>
                     <div className="input-container">
-                        <label>Username </label>
-                        <input type="text" name="uname" required onChange={(e) => setUserName(e.target.value)} />
+                        <label>Email Address </label>
+                        <input type="email" name="uname" required onChange={(e) => setEmailAddress(e.target.value)} />
                     </div>
                     <div className="input-container">
                         <label>Password </label>
                         <input type="password" name="pass" required onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div className="button-container">
-                        <input type="submit" value="Sign In" />
+                        <input className="button-signIn" type="submit" value="Sign In" />
                     </div>
                 </form>
+            </div>
+            <div className="signUp-container">
+                <i className="signUp-text">Or Sign Up using</i>
+                <div className="button-container">
+                    <input className="button-signUp" type="submit" value="Sign Up" onClick={handleRegister} />
+                </div>
             </div>
         </div>
     );

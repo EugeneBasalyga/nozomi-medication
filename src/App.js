@@ -1,26 +1,14 @@
-import './App.css';
-import './components/LoginForm.js'
-import { AuthProvider } from './components/auth';
-import LoginForm from './components/LoginForm.js';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
-import { ProtectedRoute } from './components/ProtectedRoute';
+import './components/LoginForm/LoginForm.js'
+import { AuthProvider } from './contexts/auth';
+import { BrowserRouter } from 'react-router-dom';
+import AppRouter from './router/AppRouter';
 
 const App = () => {
   return (
     <AuthProvider>
-      <div className="app">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<ProtectedRoute><h2>Home</h2></ProtectedRoute>} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/about" element={<ProtectedRoute><h2>About</h2></ProtectedRoute>} />
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
     </AuthProvider>
   );
 }

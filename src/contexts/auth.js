@@ -6,8 +6,8 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useLocalStorage("user", null);
 
-    const login = (userName, password) => {
-        setUser({userName: userName, password: password});
+    const login = (emailAddress, password) => {
+        setUser({emailAddress: emailAddress, password: password});
     }
 
     const logout = () => {

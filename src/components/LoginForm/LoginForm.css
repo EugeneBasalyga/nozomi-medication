@@ -5,7 +5,9 @@
 }
 
 .login-form {
-    margin: 80px;
+    margin: 80px 80px 40px 80px;
+    text-align: left;
+    font-size: 1.3vmin;
 }
 
 .input-container {
@@ -20,13 +22,13 @@
     justify-content: center;
 }
 
-input[type="text"],
+input[type="email"],
 input[type="password"] {
     height: 25px;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-input[type="submit"] {
+.button-signIn {
     margin-top: 10px;
     cursor: pointer;
     font-size: 15px;
@@ -34,6 +36,24 @@ input[type="submit"] {
     border: 1px solid #01d28e;
     color: #fff;
     padding: 10px 20px;
+}
+
+.button-signUp {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #093dcc;
+    border: 1px solid #093dcc;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.signUp-container {
+    margin-bottom: 30px;
+}
+
+.signUp-text {
+    font-size: 1.2vmin;
 }
 
 .login-title {

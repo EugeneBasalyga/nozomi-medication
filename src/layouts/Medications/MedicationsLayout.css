@@ -1,0 +1,11 @@
+.medicationsLayout {
+    text-align: center;
+    background-color: #28154d;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 2vmin;
+}
