@@ -1,35 +1,44 @@
-.login-container {
+.loginContainer {
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(7, 28, 221, 0.2), 0 6px 20px 0 rgba(7, 28, 221, 0.2);
     border-radius: 20px;
 }
 
-.login-form {
+.loginForm {
     margin: 80px 80px 40px 80px;
     text-align: left;
     font-size: 1.3vmin;
 }
 
-.input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px;
-}
-
-.button-container {
+.buttonContainer {
     display: flex;
     justify-content: center;
 }
 
-.signUp-container {
+.signUpContainer {
     margin-bottom: 30px;
 }
 
-.signUp-text {
+.signUpText {
     font-size: 1.2vmin;
 }
 
-.login-title {
+.loginTitle {
     font-size: calc(10px + 2vmin);
+}
+
+.buttonSignIn {
+    background: #01d28e;
+    border: 1px solid #01d28e;
+}
+
+.buttonSignUp {
+    background: #093dcc;
+    border: 1px solid #093dcc;
+}
+
+.error {
+    color: red;
+    font-size: 1vmin;
+    text-align: center;
 }

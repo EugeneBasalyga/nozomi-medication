@@ -1,27 +1,25 @@
-.register-container {
+.registerContainer {
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(7, 28, 221, 0.2), 0 6px 20px 0 rgba(7, 28, 221, 0.2);
     border-radius: 20px;
 }
 
-.register-form {
+.registerForm {
     margin: 80px 80px 40px 80px;
     text-align: left;
     font-size: 1.3vmin;
 }
 
-.input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px;
-}
-
-.button-container {
+.buttonContainer {
     display: flex;
     justify-content: center;
 }
 
-.register-title {
+.registerTitle {
     font-size: calc(10px + 2vmin);
+}
+
+.buttonSignUp {
+    background: #093dcc;
+    border: 1px solid #093dcc;
 }

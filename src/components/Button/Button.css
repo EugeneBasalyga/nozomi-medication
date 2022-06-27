@@ -1,19 +1,9 @@
-.button-signIn {
+.button {
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
     cursor: pointer;
     font-size: 15px;
-    background: #01d28e;
-    border: 1px solid #01d28e;
-    color: #fff;
-    padding: 10px 20px;
-}
-
-.button-signUp {
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 15px;
-    background: #093dcc;
-    border: 1px solid #093dcc;
     color: #fff;
     padding: 10px 20px;
 }

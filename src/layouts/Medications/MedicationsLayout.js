@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
 
-import './MedicationsLayout.css';
+import styles from './MedicationsLayout.css';
 
 const MedicationsLayout = () => {
   return (
-    <div className='medicationsLayout'>
+    <div className={styles.medicationsLayout}>
       <Outlet />
     </div>
   );

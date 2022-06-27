@@ -8,36 +8,32 @@ import { MEDICATION_ROUTES } from '../router/MedicationsRouter';
 import { RedirectMedications } from '../pages/Redirect/RedirectMedications';
 import { NOT_FOUND } from '../router/consts';
 
-export const useRouterPaths = (user) => {
+export const useRouterPaths = (auth) => {
+  return useMemo(() => {
+    if (auth.token) {
+      const medicationRoutes = [
+        ...MEDICATION_ROUTES,
+        {
+          path: NOT_FOUND,
+          element: <RedirectMedications />,
+        },
+      ];
 
-    return useMemo(() => {
+      const medicationsLayout = <MedicationsLayout />;
 
-        if (!user || (user.emailAddress !== "test@gmail.com" || user.password !== "123")) {
-            const authRoutes = [
-                ...AUTH_ROUTES,
-                {
-                    path: NOT_FOUND,
-                    element: <RedirectLogin />,
-                },
-            ];
-    
-            const authLayout = <AuthLayout />;
-    
-            return [{ element: authLayout, children: authRoutes }];
-        }
+      return [{ element: medicationsLayout, children: medicationRoutes }];
+    }
 
-        const medicationRoutes = [
-            ...MEDICATION_ROUTES,
-            {
-                path: NOT_FOUND,
-                element: <RedirectMedications />,
-            },
-        ];
+    const authRoutes = [
+      ...AUTH_ROUTES,
+      {
+        path: NOT_FOUND,
+        element: <RedirectLogin />,
+      },
+    ];
 
-        const medicationsLayout = <MedicationsLayout />;
+    const authLayout = <AuthLayout />;
 
-        return [{ element: medicationsLayout, children: medicationRoutes }];
-
-    }, [user]);
-
-}
+    return [{ element: authLayout, children: authRoutes }];
+  }, [auth]);
+};
