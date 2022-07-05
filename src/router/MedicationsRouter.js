@@ -5,6 +5,6 @@ export const MEDICATION_ROUTES = [
   {
     index: true,
     path: MEDICATIONS,
-    element: <Medications.MedicationsList />,
+    element: <Medications.MedicationsMain />,
   },
 ];

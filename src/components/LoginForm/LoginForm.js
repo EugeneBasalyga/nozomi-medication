@@ -36,11 +36,6 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const renderErrorMessage = (field) => {
-    return field === errorMessage.field
-      && (<div className={styles.error}>{errorMessage.error}</div>);
-  };
-
   return (
     <div className={styles.loginContainer}>
       <div className={styles.loginTitle}>
@@ -48,10 +43,8 @@ const LoginForm = () => {
       </div>
       <div className={styles.loginForm}>
         <form onSubmit={loginHandler}>
-          <Input label="Email Address" type="email" required onChangeHandler={emailAddressOnChangeHandler} />
-          {renderErrorMessage('emailAddress')}
-          <Input label="Password" type="password" required onChangeHandler={passwordOnChangeHandler} />
-          {renderErrorMessage('password')}
+          <Input name="emailAddress" className={styles.formInput} label="Email Address" type="email" errorMessage={errorMessage} required onChangeHandler={emailAddressOnChangeHandler} />
+          <Input name="password" className={styles.formInput} label="Password" type="password" errorMessage={errorMessage} required onChangeHandler={passwordOnChangeHandler} />
           <div className={styles.buttonContainer}>
             <Button className={styles.buttonSignIn} value="Sign In" />
           </div>

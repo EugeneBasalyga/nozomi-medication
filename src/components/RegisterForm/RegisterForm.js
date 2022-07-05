@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-import { useAuth } from '../../contexts/auth';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 
@@ -11,9 +9,32 @@ const RegisterForm = () => {
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState({});
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
 
   const registerHandler = (e) => {
+    e.preventDefault();
+    let hasError = false;
 
+    if (password !== repeatPassword) {
+      setErrorMessage({
+        field: 'repeatPassword',
+        error: 'Your password and confirmation password do not match',
+      });
+      hasError = true;
+    }
+
+    if (!passwordRegex.test(password)) {
+      setErrorMessage({
+        field: 'password',
+        error: 'Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters',
+      });
+      hasError = true;
+    }
+
+    if (!hasError) {
+      setErrorMessage({});
+    }
   };
 
   const emailAddressOnChangeHandler = (e) => {
@@ -35,9 +56,9 @@ const RegisterForm = () => {
       </div>
       <div className={styles.registerForm}>
         <form onSubmit={registerHandler}>
-          <Input label="Email Address" type="email" required onChangeHandler={emailAddressOnChangeHandler} />
-          <Input label="Password" type="password" required onChangeHandler={passwordOnChangeHandler} />
-          <Input label="Repeat password" type="password" required onChangeHandler={repeatPasswordOnChangeHandler} />
+          <Input name="emailAddress" className={styles.formInput} label="Email Address" type="email" errorMessage={errorMessage} required onChangeHandler={emailAddressOnChangeHandler} />
+          <Input name="password" className={styles.formInput} label="Password" type="password" errorMessage={errorMessage} required onChangeHandler={passwordOnChangeHandler} />
+          <Input name="repeatPassword" className={styles.formInput} label="Repeat password" type="password" errorMessage={errorMessage} required onChangeHandler={repeatPasswordOnChangeHandler} />
           <div className={styles.buttonContainer}>
             <Button className={styles.buttonSignUp} value="Sign Up" />
           </div>

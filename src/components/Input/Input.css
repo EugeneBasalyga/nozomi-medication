@@ -1,5 +1,4 @@
-input[type="email"],
-input[type="password"] {
+.input {
     height: 25px;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -8,5 +7,15 @@ input[type="password"] {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 20px;
+}
+
+.inputError {
+    height: 25px;
+    border: 1px solid red;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 1vmin;
+    text-align: center;
 }

@@ -1,7 +1,10 @@
 .loginContainer {
+    width: 350px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(7, 28, 221, 0.2), 0 6px 20px 0 rgba(7, 28, 221, 0.2);
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .loginForm {
@@ -27,6 +30,16 @@
     font-size: calc(10px + 2vmin);
 }
 
+.loginTitle h4 {
+    margin: 0;
+    margin-top: 30px;
+}
+
+.formInput {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .buttonSignIn {
     background: #01d28e;
     border: 1px solid #01d28e;
@@ -35,10 +48,4 @@
 .buttonSignUp {
     background: #093dcc;
     border: 1px solid #093dcc;
-}
-
-.error {
-    color: red;
-    font-size: 1vmin;
-    text-align: center;
 }

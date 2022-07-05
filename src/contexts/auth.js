@@ -1,8 +1,8 @@
 import { useMemo, createContext, useContext } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import HttpService from '../services/http';
 
 const AuthContext = createContext(null);
 
@@ -11,9 +11,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (emailAddress, password) => {
     try {
-      const res = await axios.post('/login', { emailAddress, password });
+      const http = new HttpService('http://localhost:3001');
+      const res = await http.post('/login', { emailAddress, password });
       setToken(res.data.token);
-      axios.defaults.headers.common.Authorization = `Bearer${res.data.token}`;
+      http.axios.defaults.headers.common.Authorization = `Bearer${res.data.token}`;
       return res.data.token;
     } catch (err) {
       return err.response.data;

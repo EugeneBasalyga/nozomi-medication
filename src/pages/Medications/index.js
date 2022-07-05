@@ -1,7 +1,7 @@
 import loadable from '@loadable/component';
 
 const Medications = {
-  MedicationsList: loadable(() => import('./MedicationsList'), {
+  MedicationsMain: loadable(() => import('./MedicationsMain'), {
     fallback: <>Loading...</>,
   }),
 };
