@@ -10,7 +10,10 @@ import { NOT_FOUND } from '../router/consts';
 
 export const useRouterPaths = (auth) => {
   return useMemo(() => {
-    if (auth.token) {
+    if (auth.isLoading) {
+      return [];
+    }
+    if (auth.user) {
       const medicationRoutes = [
         ...MEDICATION_ROUTES,
         {
@@ -35,5 +38,5 @@ export const useRouterPaths = (auth) => {
     const authLayout = <AuthLayout />;
 
     return [{ element: authLayout, children: authRoutes }];
-  }, [auth]);
+  }, [auth.user, auth.isLoading]);
 };

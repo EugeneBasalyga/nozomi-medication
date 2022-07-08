@@ -1,28 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import medicationApiInstance from '../../services/api/medications';
 
 import styles from './MedicationsList.css';
 
-const medications = [
-  {
-    name: 'OxyContin',
-    count: 5,
-    destinationCount: 15,
-  },
-  {
-    name: 'Baclofen',
-    count: 0,
-    destinationCount: 25,
-  },
-  {
-    name: 'Celexa',
-    count: 12,
-    destinationCount: 12,
-  },
-];
-
 const MedicationsList = () => {
   const [medication, setMedication] = useState({});
-  const [medicationsList, setMedicationsList] = useState(medications);
+  const [medications, setMedications] = useState([]);
+
+  useEffect(() => {
+    medicationApiInstance.getMedications()
+      .then((data) => setMedications(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleChange = (e) => {
     setMedication({
@@ -34,7 +24,7 @@ const MedicationsList = () => {
 
   const handleSubmit = (e) => {
     if (medication) {
-      setMedicationsList(medicationsList.concat(medication));
+      setMedications(medications.concat(medication));
     }
 
     setMedication({});
@@ -45,28 +35,16 @@ const MedicationsList = () => {
   return (
     <div className={styles.medicationsContainer}>
       <ul className={styles.medicationsList}>
-        {medicationsList.map((item) => (
+        {medications.map((item) => (
           <li key={item.name}>
             <div>
-              <p>
-                Name:
-                {' '}
-                {item.name}
-              </p>
+              {`Name: ${item.name}`}
             </div>
             <div>
-              <p>
-                Count:
-                {' '}
-                {item.count}
-              </p>
+              {`Count: ${item.count}`}
             </div>
             <div>
-              <p>
-                Destination count:
-                {' '}
-                {item.destinationCount}
-              </p>
+              {`Destination count: ${item.destinationCount}`}
             </div>
           </li>
         ))}

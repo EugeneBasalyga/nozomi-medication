@@ -1,21 +1,35 @@
-import { useMemo, createContext, useContext } from 'react';
+import {
+  useState, useEffect, useMemo, createContext, useContext,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import HttpService from '../services/http';
+import authApiInstance from '../services/api/auth';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useLocalStorage('jwtToken', null);
+  const [accessToken, setAccessToken] = useLocalStorage('accessToken', null);
+  const [isLoading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    authApiInstance.getCurrentUser()
+      .then((data) => {
+        setUser(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
 
   const login = async (emailAddress, password) => {
     try {
-      const http = new HttpService('http://localhost:3001');
-      const res = await http.post('/login', { emailAddress, password });
-      setToken(res.data.token);
-      http.axios.defaults.headers.common.Authorization = `Bearer${res.data.token}`;
-      return res.data.token;
+      const data = await authApiInstance.login(emailAddress, password);
+      setUser({ emailAddress: data.emailAddress });
+      setAccessToken(data.accessToken);
+      return data.accessToken;
     } catch (err) {
       return err.response.data;
     }
@@ -24,13 +38,26 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
   };
 
+  // const value = useMemo(
+  //   () => ({
+  //     user,
+  //     isLoading,
+  //     login,
+  //     logout,
+  //   }),
+  //   [user, isLoading],
+  // );
+
   const value = useMemo(
-    () => ({
-      token,
-      login,
-      logout,
-    }),
-    [token],
+    () => {
+      return {
+        user,
+        isLoading,
+        login,
+        logout,
+      };
+    },
+    [user, isLoading],
   );
 
   return (
