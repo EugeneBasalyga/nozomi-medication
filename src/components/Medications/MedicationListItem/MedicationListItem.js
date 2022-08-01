@@ -11,16 +11,6 @@ const MedicationListItem = ({
   onIncrementMedicationCurrentCount,
   onDecrementMedicationCurrentCount,
 }) => {
-  const incrementMedicationCurrentCount = (e) => {
-    e.stopPropagation();
-    onIncrementMedicationCurrentCount(item.count);
-  };
-
-  const decrementMedicationCurrentCount = (e) => {
-    e.stopPropagation();
-    onDecrementMedicationCurrentCount(item.count);
-  };
-
   return (
     <Link to={`${MEDICATIONS}/${item.id}`} className={styles.link}>
       <div className={styles.medicationsListItem}>
@@ -32,9 +22,9 @@ const MedicationListItem = ({
         </div>
         <div className={styles.counterContainer}>
           Current count:
-          <Button className={styles.counterButton} value="+" onClick={incrementMedicationCurrentCount} />
+          <Button className={styles.counterButton} value="+" onClickHandler={(e) => onIncrementMedicationCurrentCount(e, item)} />
           {item.count}
-          <Button className={styles.counterButton} value="-" onClick={decrementMedicationCurrentCount} />
+          <Button className={styles.counterButton} value="-" onClickHandler={(e) => onDecrementMedicationCurrentCount(e, item)} />
         </div>
         <div>
           {`Destination count: ${item.destinationCount}`}

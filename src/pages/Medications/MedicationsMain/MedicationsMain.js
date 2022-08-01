@@ -40,12 +40,28 @@ const MedicationsMain = () => {
       .catch((err) => console.log(err));
   };
 
-  const incrementMedicationCurrentCount = (currentCount) => {
-    console.log(currentCount);
+  const incrementMedicationCurrentCount = (e, medication) => {
+    e.preventDefault();
+    const medicationCount = medication.count + 1;
+    updateMedicationCurrentCount(medication.id, medicationCount);
   };
 
-  const decrementMedicationCurrentCount = (currentCount) => {
-    console.log(currentCount);
+  const decrementMedicationCurrentCount = (e, medication) => {
+    e.preventDefault();
+    const medicationCount = medication.count - 1;
+    updateMedicationCurrentCount(medication.id, medicationCount);
+  };
+
+  const updateMedicationCurrentCount = (medicationId, medicationCount) => {
+    medicationApiInstance.updateMedicationCurrentCount(medicationId, { count: medicationCount })
+      .then(() => {
+        medicationApiInstance.getMedications()
+          .then((data) => {
+            setMedications(data);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
