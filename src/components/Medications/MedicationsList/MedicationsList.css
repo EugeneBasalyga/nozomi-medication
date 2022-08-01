@@ -1,0 +1,12 @@
+.buttonAddNewMedication {
+  background: #197080;
+  border: none;
+  color: black;
+  font-size: 1.5vmin;
+  border-radius: 10px;
+}
+
+.buttonAddNewMedication:hover {
+  background: #1f8192;
+  border: none;
+}

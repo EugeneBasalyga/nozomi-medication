@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useAuth } from '../../contexts/auth';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-import { REGISTER } from '../../router/consts';
+import { useAuth } from '../../../contexts/auth';
+import Input from '../../Common/Input/Input';
+import Button from '../../Common/Button/Button';
+import { REGISTER } from '../../../router/consts';
 
 import styles from './LoginForm.css';
 
@@ -43,8 +43,8 @@ const LoginForm = () => {
       </div>
       <div className={styles.loginForm}>
         <form onSubmit={loginHandler}>
-          <Input name="emailAddress" className={styles.formInput} label="Email Address" type="email" errorMessage={errorMessage} required onChangeHandler={emailAddressOnChangeHandler} />
-          <Input name="password" className={styles.formInput} label="Password" type="password" errorMessage={errorMessage} required onChangeHandler={passwordOnChangeHandler} />
+          <Input name="emailAddress" inputContainerClassName={styles.formInput} label="Email Address" type="email" value={emailAddress} errorMessage={errorMessage} required onChangeHandler={emailAddressOnChangeHandler} />
+          <Input name="password" inputContainerClassName={styles.formInput} label="Password" type="password" value={password} errorMessage={errorMessage} required onChangeHandler={passwordOnChangeHandler} />
           <div className={styles.buttonContainer}>
             <Button className={styles.buttonSignIn} value="Sign In" />
           </div>

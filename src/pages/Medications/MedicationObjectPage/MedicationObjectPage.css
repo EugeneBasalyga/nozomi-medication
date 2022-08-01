@@ -1,0 +1,14 @@
+.medicationObjectPageContainer {
+  min-height: inherit;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.medicationObjectPageForm {
+  width: 600px;
+  background-color: rgb(211, 221, 230);
+  border-radius: 15px;
+  margin-left: 20px;
+}

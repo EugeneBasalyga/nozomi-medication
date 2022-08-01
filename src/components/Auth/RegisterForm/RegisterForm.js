@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import Input from '../Input/Input';
-import Button from '../Button/Button';
+import Input from '../../Common/Input/Input';
+import Button from '../../Common/Button/Button';
 
 import styles from './RegisterForm.css';
 
@@ -56,9 +56,9 @@ const RegisterForm = () => {
       </div>
       <div className={styles.registerForm}>
         <form onSubmit={registerHandler}>
-          <Input name="emailAddress" className={styles.formInput} label="Email Address" type="email" errorMessage={errorMessage} required onChangeHandler={emailAddressOnChangeHandler} />
-          <Input name="password" className={styles.formInput} label="Password" type="password" errorMessage={errorMessage} required onChangeHandler={passwordOnChangeHandler} />
-          <Input name="repeatPassword" className={styles.formInput} label="Repeat password" type="password" errorMessage={errorMessage} required onChangeHandler={repeatPasswordOnChangeHandler} />
+          <Input name="emailAddress" inputContainerClassName={styles.formInput} label="Email Address" type="email" value={emailAddress} errorMessage={errorMessage} required onChangeHandler={emailAddressOnChangeHandler} />
+          <Input name="password" inputContainerClassName={styles.formInput} label="Password" type="password" value={password} errorMessage={errorMessage} required onChangeHandler={passwordOnChangeHandler} />
+          <Input name="repeatPassword" inputContainerClassName={styles.formInput} label="Repeat password" type="password" value={repeatPassword} errorMessage={errorMessage} required onChangeHandler={repeatPasswordOnChangeHandler} />
           <div className={styles.buttonContainer}>
             <Button className={styles.buttonSignUp} value="Sign Up" />
           </div>

@@ -1,0 +1,43 @@
+.medicationInputContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+}
+
+.medicationHeader {
+  text-align: center;
+}
+
+.medicationButtonContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+}
+
+.buttonSave {
+  background: rgb(12, 113, 207);
+  border: none;
+  color: whitesmoke;
+  font-size: 1.5vmin;
+  border-radius: 10px;
+}
+
+.buttonSave:hover {
+  background: rgb(22, 129, 230);
+  border: none;
+}
+
+.buttonCancel {
+  background: white;
+  border: none;
+  color: black;
+  font-size: 1.5vmin;
+  border-radius: 10px;
+}
+
+.buttonCancel:hover {
+  background: rgb(240, 240, 240);
+  border: none;
+}

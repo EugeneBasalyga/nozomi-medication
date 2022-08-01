@@ -17,6 +17,10 @@ class HttpService {
     return this.axios.put(url, data, config);
   }
 
+  patch(url, data, config) {
+    return this.axios.patch(url, data, config);
+  }
+
   delete(url, config) {
     return this.axios.delete(url, config);
   }

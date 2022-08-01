@@ -3,13 +3,13 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useAccessToken } from '../hooks/useAccessToken';
 import authApiInstance from '../services/api/auth';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [accessToken, setAccessToken] = useLocalStorage('accessToken', null);
+  const [accessToken, setAccessToken] = useAccessToken();
   const [isLoading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
@@ -37,16 +37,6 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
   };
-
-  // const value = useMemo(
-  //   () => ({
-  //     user,
-  //     isLoading,
-  //     login,
-  //     logout,
-  //   }),
-  //   [user, isLoading],
-  // );
 
   const value = useMemo(
     () => {

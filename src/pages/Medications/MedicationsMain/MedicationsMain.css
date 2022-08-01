@@ -1,0 +1,19 @@
+.medicationsMainContainer {
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+}
+
+.medicationsListContainer {
+  flex: 2;
+}
+
+.newMedicationContainer {
+  flex: 1;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(211, 221, 230);
+  border-radius: 15px;
+  margin-left: 20px;
+}

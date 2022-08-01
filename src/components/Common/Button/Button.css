@@ -1,9 +1,7 @@
 .button {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
     cursor: pointer;
-    font-size: 15px;
     color: #fff;
     padding: 10px 20px;
 }

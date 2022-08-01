@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './Input.css';
 
 const Input = ({
-  name, className, label, type, errorMessage, required, onChangeHandler,
+  name, inputContainerClassName, label, type, value, errorMessage, required, onChangeHandler,
 }) => {
   const getInputClassName = (field) => {
     if (field === errorMessage.field) {
@@ -20,13 +20,14 @@ const Input = ({
 
   return (
     <>
-      <div className={clsx(styles.inputContainer, className)}>
+      <div className={clsx(styles.inputContainer, inputContainerClassName)}>
         <label htmlFor="input">{label}</label>
         <input
           className={getInputClassName(name)}
           type={type}
+          value={value}
           required={required}
-          onChange={onChangeHandler}
+          onChange={(e) => onChangeHandler(e, name)}
         />
       </div>
       {renderErrorMessage(name)}
@@ -36,9 +37,10 @@ const Input = ({
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  inputContainerClassName: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   type: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   errorMessage: PropTypes.shape({
     field: PropTypes.string,
     error: PropTypes.string,
@@ -48,8 +50,9 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  className: '',
+  inputContainerClassName: '',
   type: 'text',
+  value: '',
   errorMessage: {},
   required: true,
 };

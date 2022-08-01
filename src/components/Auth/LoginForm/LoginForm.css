@@ -43,9 +43,21 @@
 .buttonSignIn {
     background: #01d28e;
     border: 1px solid #01d28e;
+    margin-top: 10px;
+}
+
+.buttonSignIn:hover {
+    background: #00e79a;
+    border: 1px solid #00e79a;
 }
 
 .buttonSignUp {
     background: #093dcc;
     border: 1px solid #093dcc;
+    margin-top: 10px;
+}
+
+.buttonSignUp:hover {
+    background: #1250fa;
+    border: 1px solid #1250fa;
 }

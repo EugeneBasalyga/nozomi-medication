@@ -13,21 +13,15 @@ export const useRouterPaths = (auth) => {
     if (auth.isLoading) {
       return [];
     }
-    if (auth.user) {
-      const medicationRoutes = [
-        ...MEDICATION_ROUTES,
-        {
-          path: NOT_FOUND,
-          element: <RedirectMedications />,
-        },
-      ];
 
-      const medicationsLayout = <MedicationsLayout />;
-
-      return [{ element: medicationsLayout, children: medicationRoutes }];
-    }
-
-    const authRoutes = [
+    const layout = auth.user ? <MedicationsLayout /> : <AuthLayout />;
+    const routes = auth.user ? [
+      ...MEDICATION_ROUTES,
+      {
+        path: NOT_FOUND,
+        element: <RedirectMedications />,
+      },
+    ] : [
       ...AUTH_ROUTES,
       {
         path: NOT_FOUND,
@@ -35,8 +29,6 @@ export const useRouterPaths = (auth) => {
       },
     ];
 
-    const authLayout = <AuthLayout />;
-
-    return [{ element: authLayout, children: authRoutes }];
+    return [{ element: layout, children: routes }];
   }, [auth.user, auth.isLoading]);
 };

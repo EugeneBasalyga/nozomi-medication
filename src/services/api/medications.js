@@ -15,8 +15,8 @@ class MedicationApi extends ApiService {
     return response.data;
   }
 
-  async getMedicationById(accountId) {
-    const response = await this.http.get(`/medications/${accountId}`);
+  async getMedicationById(medicationId) {
+    const response = await this.http.get(`/medications/${medicationId}`);
     return response.data;
   }
 
@@ -25,8 +25,18 @@ class MedicationApi extends ApiService {
     return response.data;
   }
 
-  async updateMedication(accountId, data) {
-    const response = await this.http.put(`/medications/${accountId}`, data);
+  async updateMedication(medicationId, data) {
+    const response = await this.http.put(`/medications/${medicationId}`, data);
+    return response.data;
+  }
+
+  async updateMedicationCurrentCount(medicationId, data) {
+    const response = await this.http.patch(`/medications/${medicationId}`, data);
+    return response.data;
+  }
+
+  async deleteMedication(medicationId) {
+    const response = await this.http.delete(`/medications/${medicationId}`);
     return response.data;
   }
 }
