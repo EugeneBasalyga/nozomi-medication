@@ -30,8 +30,8 @@ class MedicationApi extends ApiService {
     return response.data;
   }
 
-  async updateMedicationCurrentCount(medicationId, data) {
-    const response = await this.http.patch(`/medications/${medicationId}`, data);
+  async updateMedicationCurrentCount(medicationId, medicationCount) {
+    const response = await this.http.patch(`/medications/${medicationId}`, { count: medicationCount });
     return response.data;
   }
 

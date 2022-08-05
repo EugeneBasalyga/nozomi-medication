@@ -22,15 +22,17 @@ const Input = ({
     <>
       <div className={clsx(styles.inputContainer, inputContainerClassName)}>
         <label htmlFor="input">{label}</label>
-        <input
-          className={getInputClassName(name)}
-          type={type}
-          value={value}
-          required={required}
-          onChange={(e) => onChangeHandler(e, name)}
-        />
+        <div>
+          <input
+            className={getInputClassName(name)}
+            type={type}
+            value={value}
+            required={required}
+            onChange={(e) => onChangeHandler(e, name)}
+          />
+          {renderErrorMessage(name)}
+        </div>
       </div>
-      {renderErrorMessage(name)}
     </>
   );
 };

@@ -38,6 +38,17 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
   };
 
+  const register = async (emailAddress, password, repeatPassword) => {
+    try {
+      const data = await authApiInstance.register(emailAddress, password, repeatPassword);
+      setUser({ emailAddress: data.emailAddress });
+      setAccessToken(data.accessToken);
+      return data.accessToken;
+    } catch (err) {
+      return err.response.data;
+    }
+  };
+
   const value = useMemo(
     () => {
       return {
@@ -45,6 +56,7 @@ export const AuthProvider = ({ children }) => {
         isLoading,
         login,
         logout,
+        register,
       };
     },
     [user, isLoading],

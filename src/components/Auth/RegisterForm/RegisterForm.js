@@ -1,18 +1,20 @@
 import { useState } from 'react';
 
+import { useAuth } from '../../../contexts/auth';
 import Input from '../../Common/Input/Input';
 import Button from '../../Common/Button/Button';
 
 import styles from './RegisterForm.css';
 
 const RegisterForm = () => {
+  const { register } = useAuth();
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState({});
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
 
-  const registerHandler = (e) => {
+  const registerHandler = async (e) => {
     e.preventDefault();
     let hasError = false;
 
@@ -33,7 +35,10 @@ const RegisterForm = () => {
     }
 
     if (!hasError) {
-      setErrorMessage({});
+      const errorMessage = await register(emailAddress, password, repeatPassword);
+      if (errorMessage.error) {
+        setErrorMessage(errorMessage);
+      }
     }
   };
 

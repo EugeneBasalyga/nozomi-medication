@@ -16,8 +16,8 @@ class AuthApi extends ApiService {
     return response.data;
   }
 
-  async register(emailAddress, password) {
-    const response = await this.http.post('/register', { emailAddress, password });
+  async register(emailAddress, password, repeatPassword) {
+    const response = await this.http.post('/register', { emailAddress, password, repeatPassword });
 
     return response.data;
   }

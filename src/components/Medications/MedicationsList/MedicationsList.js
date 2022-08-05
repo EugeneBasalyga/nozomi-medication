@@ -14,14 +14,26 @@ const MedicationsList = ({
   return (
     <>
       <div>
-        {medications.map((item) => (
-          <MedicationListItem
-            key={item.id}
-            item={item}
-            onIncrementMedicationCurrentCount={onIncrementMedicationCurrentCount}
-            onDecrementMedicationCurrentCount={onDecrementMedicationCurrentCount}
-          />
-        ))}
+        {medications.sort((firstItem, secItem) => secItem.updatedAt - firstItem.updatedAt)
+          .filter((item) => item.count !== item.destinationCount).map((item) => (
+            <MedicationListItem
+              key={item.id}
+              item={item}
+              onIncrementMedicationCurrentCount={onIncrementMedicationCurrentCount}
+              onDecrementMedicationCurrentCount={onDecrementMedicationCurrentCount}
+            />
+          ))}
+        {medications.sort((firstItem, secItem) => secItem.updatedAt - firstItem.updatedAt)
+          .filter((item) => item.count === item.destinationCount).map((item) => (
+            <MedicationListItem
+              medicationItemClassName={styles.medicationItemFulfilled}
+              medicationItemCounterButtonsClassName={styles.medicationItemCounterButtonFulfilled}
+              key={item.id}
+              item={item}
+              onIncrementMedicationCurrentCount={onIncrementMedicationCurrentCount}
+              onDecrementMedicationCurrentCount={onDecrementMedicationCurrentCount}
+            />
+          ))}
       </div>
 
       <Button className={styles.buttonAddNewMedication} value="Add New Medication" onClickHandler={onAddNewMedicationHandler} />

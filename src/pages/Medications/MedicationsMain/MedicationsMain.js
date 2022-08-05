@@ -53,7 +53,7 @@ const MedicationsMain = () => {
   };
 
   const updateMedicationCurrentCount = (medicationId, medicationCount) => {
-    medicationApiInstance.updateMedicationCurrentCount(medicationId, { count: medicationCount })
+    medicationApiInstance.updateMedicationCurrentCount(medicationId, medicationCount)
       .then(() => {
         medicationApiInstance.getMedications()
           .then((data) => {

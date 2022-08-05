@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -7,13 +8,15 @@ import { MEDICATIONS } from '../../../router/consts';
 import styles from './MedicationListItem.css';
 
 const MedicationListItem = ({
+  medicationItemClassName,
+  medicationItemCounterButtonsClassName,
   item,
   onIncrementMedicationCurrentCount,
   onDecrementMedicationCurrentCount,
 }) => {
   return (
     <Link to={`${MEDICATIONS}/${item.id}`} className={styles.link}>
-      <div className={styles.medicationsListItem}>
+      <div className={clsx(styles.medicationsListItem, medicationItemClassName)}>
         <div>
           {`Name: ${item.name}`}
         </div>
@@ -22,9 +25,9 @@ const MedicationListItem = ({
         </div>
         <div className={styles.counterContainer}>
           Current count:
-          <Button className={styles.counterButton} value="+" onClickHandler={(e) => onIncrementMedicationCurrentCount(e, item)} />
-          {item.count}
-          <Button className={styles.counterButton} value="-" onClickHandler={(e) => onDecrementMedicationCurrentCount(e, item)} />
+          {item.count !== item.destinationCount ? <Button className={clsx(styles.counterButton, medicationItemCounterButtonsClassName)} value="+" onClickHandler={(e) => onIncrementMedicationCurrentCount(e, item)} /> : null}
+          {` ${item.count} `}
+          {item.count !== 0 ? <Button className={clsx(styles.counterButton, medicationItemCounterButtonsClassName)} value="-" onClickHandler={(e) => onDecrementMedicationCurrentCount(e, item)} /> : null}
         </div>
         <div>
           {`Destination count: ${item.destinationCount}`}
@@ -35,6 +38,8 @@ const MedicationListItem = ({
 };
 
 MedicationListItem.propTypes = {
+  medicationItemClassName: PropTypes.string,
+  medicationItemCounterButtonsClassName: PropTypes.string,
   item: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
@@ -44,6 +49,11 @@ MedicationListItem.propTypes = {
   }).isRequired,
   onIncrementMedicationCurrentCount: PropTypes.func.isRequired,
   onDecrementMedicationCurrentCount: PropTypes.func.isRequired,
+};
+
+MedicationListItem.defaultProps = {
+  medicationItemClassName: '',
+  medicationItemCounterButtonsClassName: '',
 };
 
 export default MedicationListItem;
