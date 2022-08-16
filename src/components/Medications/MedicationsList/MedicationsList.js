@@ -14,7 +14,7 @@ const MedicationsList = ({
   return (
     <>
       <div>
-        {medications.sort((firstItem, secItem) => secItem.updatedAt - firstItem.updatedAt)
+        {medications.sort((firstItem, secItem) => secItem.createdAt - firstItem.createdAt)
           .filter((item) => item.count !== item.destinationCount).map((item) => (
             <MedicationListItem
               key={item.id}
