@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Input from '../../Common/Input/Input';
 import Button from '../../Common/Button/Button';
 
-import styles from './EditMedication.css';
+import styles from './EditMedication.scss';
 
 const EditMedication = ({
   medication, isNewMedication, saveMedication, cancelEditMedication,

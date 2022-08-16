@@ -6,9 +6,11 @@
   border-radius: 10px;
 }
 
-.buttonAddNewMedication:hover {
-  background: #1f8192;
-  border: none;
+.buttonAddNewMedication {
+  &:hover {
+    background: #1f8192;
+    border: none;
+  }
 }
 
 .medicationItemFulfilled {
@@ -16,15 +18,19 @@
   border: 1px solid #417759;
 }
 
-.medicationItemFulfilled:hover {
-  background-color: #538668;
-  border: 1px solid #538668
+.medicationItemFulfilled {
+  &:hover {
+    background-color: #538668;
+    border: 1px solid #538668
+  }
 }
 
 .medicationItemCounterButtonFulfilled {
   background: #417759;
 }
 
-.medicationItemCounterButtonFulfilled:hover {
-  background: #538668;
+.medicationItemCounterButtonFulfilled {
+  &:hover {
+    background: #538668;
+  }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MedicationListItem from '../MedicationListItem/MedicationListItem';
 import Button from '../../Common/Button/Button';
 
-import styles from './MedicationsList.css';
+import styles from './MedicationsList.scss';
 
 const MedicationsList = ({
   medications,

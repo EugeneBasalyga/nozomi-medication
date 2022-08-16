@@ -4,7 +4,7 @@ import { useAuth } from '../../../contexts/auth';
 import Input from '../../Common/Input/Input';
 import Button from '../../Common/Button/Button';
 
-import styles from './RegisterForm.css';
+import styles from './RegisterForm.scss';
 
 const RegisterForm = () => {
   const { register } = useAuth();

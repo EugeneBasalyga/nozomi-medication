@@ -6,7 +6,7 @@ import EditMedication from '../../../components/Medications/EditMedication/EditM
 import DisplayMedication from '../../../components/Medications/DisplayMedication/DisplayMedication';
 import { MEDICATIONS } from '../../../router/consts';
 
-import styles from './MedicationObjectPage.css';
+import styles from './MedicationObjectPage.scss';
 
 const MedicationObjectPage = () => {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
-import styles from './Input.css';
+import styles from './Input.scss';
 
 const Input = ({
   name, inputContainerClassName, label, type, value, errorMessage, required, onChangeHandler,

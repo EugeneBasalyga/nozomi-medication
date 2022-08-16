@@ -4,7 +4,7 @@ import medicationApiInstance from '../../../services/api/medications';
 import MedicationsList from '../../../components/Medications/MedicationsList/MedicationsList';
 import NewMedication from '../../../components/Medications/EditMedication/EditMedication';
 
-import styles from './MedicationsMain.css';
+import styles from './MedicationsMain.scss';
 
 const MedicationsMain = () => {
   const [isShowNewMedication, setIsShowNewMedication] = useState(false);

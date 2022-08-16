@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
-import styles from './Button.css';
+import styles from './Button.scss';
 
 const Button = ({ className, value, onClickHandler }) => {
   return (

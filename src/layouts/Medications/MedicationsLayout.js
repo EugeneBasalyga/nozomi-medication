@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import styles from './MedicationsLayout.css';
+import styles from './MedicationsLayout.scss';
 
 const MedicationsLayout = () => {
   return (

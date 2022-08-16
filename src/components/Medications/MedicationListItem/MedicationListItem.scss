@@ -10,9 +10,11 @@
   color: inherit;
 }
 
-.medicationsListItem:hover {
-  background-color: #967c65;
-  border: 1px solid #967c65
+.medicationsListItem {
+  &:hover {
+    background-color: #967c65;
+    border: 1px solid #967c65
+  }
 }
 
 .medicationsListItem div {
@@ -34,6 +36,8 @@
   padding: 8px;
 }
 
-.counterButton:hover {
-  background: #967c65;
+.counterButton {
+  &:hover {
+    background: #967c65;
+  }
 }

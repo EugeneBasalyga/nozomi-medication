@@ -6,7 +6,7 @@ import Input from '../../Common/Input/Input';
 import Button from '../../Common/Button/Button';
 import { REGISTER } from '../../../router/consts';
 
-import styles from './LoginForm.css';
+import styles from './LoginForm.scss';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');

@@ -24,9 +24,11 @@
   border-radius: 10px;
 }
 
-.buttonSave:hover {
-  background: rgb(22, 129, 230);
-  border: none;
+.buttonSave {
+  &:hover {
+    background: rgb(22, 129, 230);
+    border: none;
+  }
 }
 
 .buttonCancel {
@@ -37,7 +39,9 @@
   border-radius: 10px;
 }
 
-.buttonCancel:hover {
-  background: rgb(240, 240, 240);
-  border: none;
+.buttonCancel {
+  &:hover {
+    background: rgb(240, 240, 240);
+    border: none;
+  }
 }

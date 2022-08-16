@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Button from '../../Common/Button/Button';
 import { MEDICATIONS } from '../../../router/consts';
 
-import styles from './MedicationListItem.css';
+import styles from './MedicationListItem.scss';
 
 const MedicationListItem = ({
   medicationItemClassName,

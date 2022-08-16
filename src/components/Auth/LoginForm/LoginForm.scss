@@ -30,9 +30,11 @@
     font-size: calc(10px + 2vmin);
 }
 
-.loginTitle h4 {
-    margin: 0;
-    margin-top: 30px;
+.loginTitle {
+    h4 {
+        margin: 0;
+        margin-top: 30px;
+    }
 }
 
 .formInput {
@@ -46,9 +48,11 @@
     margin-top: 10px;
 }
 
-.buttonSignIn:hover {
-    background: #00e79a;
-    border: 1px solid #00e79a;
+.buttonSignIn {
+    &:hover {
+        background: #00e79a;
+        border: 1px solid #00e79a;
+    }
 }
 
 .buttonSignUp {
@@ -57,7 +61,9 @@
     margin-top: 10px;
 }
 
-.buttonSignUp:hover {
-    background: #1250fa;
-    border: 1px solid #1250fa;
+.buttonSignUp {
+    &:hover {
+        background: #1250fa;
+        border: 1px solid #1250fa;
+    }
 }

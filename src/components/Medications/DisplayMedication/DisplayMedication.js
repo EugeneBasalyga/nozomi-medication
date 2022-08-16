@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import Button from '../../Common/Button/Button';
 
-import styles from './DisplayMedication.css';
+import styles from './DisplayMedication.scss';
 
 const DisplayMedication = ({ medication, editMedication, deleteMedication }) => {
   return (

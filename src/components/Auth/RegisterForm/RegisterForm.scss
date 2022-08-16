@@ -1,0 +1,48 @@
+.registerContainer {
+    width: 350px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(7, 28, 221, 0.2), 0 6px 20px 0 rgba(7, 28, 221, 0.2);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.registerForm {
+    padding: 80px 80px 40px 80px;
+    text-align: left;
+    font-size: 1.3vmin;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.formInput {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.registerTitle {
+    font-size: calc(10px + 2vmin);
+}
+
+.registerTitle {
+    h4 {
+        margin: 0;
+        margin-top: 30px;
+    }
+}
+
+.buttonSignUp {
+    background: #093dcc;
+    border: 1px solid #093dcc;
+    margin-top: 10px;
+}
+
+.buttonSignUp {
+    &:hover {
+        background: #1250fa;
+        border: 1px solid #1250fa;
+    }
+}
