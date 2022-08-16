@@ -9,17 +9,23 @@ import { REGISTER } from '../../../router/consts';
 import styles from './LoginForm.css';
 
 const LoginForm = () => {
-  const [emailAddress, setEmailAddress] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState({});
+  const [errorMessages, setErrorMessages] = useState([]);
   const navigate = useNavigate();
   const { login } = useAuth();
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    const errorMessage = await login(emailAddress, password);
-    if (errorMessage.error) {
-      setErrorMessage(errorMessage);
+    const data = await login(email, password);
+    if (data.errors) {
+      const errors = data.errors.map((error) => {
+        return {
+          field: error.param,
+          error: error.msg,
+        };
+      });
+      setErrorMessages(errors);
     }
   };
 
@@ -28,8 +34,8 @@ const LoginForm = () => {
     navigate(REGISTER);
   };
 
-  const emailAddressOnChangeHandler = (e) => {
-    setEmailAddress(e.target.value);
+  const emailOnChangeHandler = (e) => {
+    setEmail(e.target.value);
   };
 
   const passwordOnChangeHandler = (e) => {
@@ -43,8 +49,8 @@ const LoginForm = () => {
       </div>
       <div className={styles.loginForm}>
         <form onSubmit={loginHandler}>
-          <Input name="emailAddress" inputContainerClassName={styles.formInput} label="Email Address" type="email" value={emailAddress} errorMessage={errorMessage} required onChangeHandler={emailAddressOnChangeHandler} />
-          <Input name="password" inputContainerClassName={styles.formInput} label="Password" type="password" value={password} errorMessage={errorMessage} required onChangeHandler={passwordOnChangeHandler} />
+          <Input name="email" inputContainerClassName={styles.formInput} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} required onChangeHandler={emailOnChangeHandler} />
+          <Input name="password" inputContainerClassName={styles.formInput} label="Password" type="password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} required onChangeHandler={passwordOnChangeHandler} />
           <div className={styles.buttonContainer}>
             <Button className={styles.buttonSignIn} value="Sign In" />
           </div>

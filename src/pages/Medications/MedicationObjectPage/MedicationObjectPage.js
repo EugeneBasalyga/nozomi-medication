@@ -20,20 +20,15 @@ const MedicationObjectPage = () => {
       .catch((err) => console.log(err));
   }, [id]);
 
-  const saveMedication = (editMedication) => {
-    const med = editMedication;
-    med.count = parseInt(editMedication.count, 10);
-    med.destinationCount = parseInt(editMedication.destinationCount, 10);
-    medicationApiInstance.updateMedication(med.id, med)
-      .then(() => {
-        medicationApiInstance.getMedicationById(med.id)
-          .then((data) => {
-            setMedication(data);
-            setIsEditMode(false);
-          })
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
+  const saveMedication = async (editMedication) => {
+    try {
+      const data = await medicationApiInstance.updateMedication(editMedication.id, editMedication);
+      setMedication(data);
+      setIsEditMode(false);
+      return data;
+    } catch (err) {
+      return err.response.data;
+    }
   };
 
   const cancelEditMedication = () => {
@@ -57,15 +52,15 @@ const MedicationObjectPage = () => {
           ? (
             <EditMedication
               medication={medication}
-              onSaveMedicationHandler={saveMedication}
-              onCancelEditMedicationHandler={cancelEditMedication}
+              saveMedication={saveMedication}
+              cancelEditMedication={cancelEditMedication}
             />
           )
           : (
             <DisplayMedication
               medication={medication}
-              onEditMedicationHandler={editMedication}
-              onDeleteMedicationHandler={deleteMedication}
+              editMedication={editMedication}
+              deleteMedication={deleteMedication}
             />
           )}
       </div>

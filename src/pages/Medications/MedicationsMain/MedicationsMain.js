@@ -24,20 +24,16 @@ const MedicationsMain = () => {
     setIsShowNewMedication(false);
   };
 
-  const saveNewMedication = (newMedication) => {
-    const med = newMedication;
-    med.count = parseInt(newMedication.count, 10);
-    med.destinationCount = parseInt(newMedication.destinationCount, 10);
-    medicationApiInstance.createMedication(med)
-      .then(() => {
-        medicationApiInstance.getMedications()
-          .then((data) => {
-            setMedications(data);
-            setIsShowNewMedication(false);
-          })
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
+  const saveNewMedication = async (newMedication) => {
+    try {
+      const data = await medicationApiInstance.createMedication(newMedication);
+      const medicationsUpd = [...medications];
+      medicationsUpd.push(data);
+      setMedications(medicationsUpd);
+      return data;
+    } catch (err) {
+      return err.response.data;
+    }
   };
 
   const incrementMedicationCurrentCount = (e, medication) => {
@@ -54,12 +50,13 @@ const MedicationsMain = () => {
 
   const updateMedicationCurrentCount = (medicationId, medicationCount) => {
     medicationApiInstance.updateMedicationCurrentCount(medicationId, medicationCount)
-      .then(() => {
-        medicationApiInstance.getMedications()
-          .then((data) => {
-            setMedications(data);
-          })
-          .catch((err) => console.log(err));
+      .then((data) => {
+        const medicationIndex = medications.findIndex((medication) => {
+          return medication.id === medicationId;
+        });
+        const medicationsUpd = [...medications];
+        medicationsUpd[medicationIndex] = data;
+        setMedications(medicationsUpd);
       })
       .catch((err) => console.log(err));
   };
@@ -79,8 +76,8 @@ const MedicationsMain = () => {
           <div className={styles.newMedicationContainer}>
             <NewMedication
               isNewMedication
-              onSaveMedicationHandler={saveNewMedication}
-              onCancelEditMedicationHandler={cancelNewMedication}
+              saveMedication={saveNewMedication}
+              cancelEditMedication={cancelNewMedication}
             />
           </div>
         ) : null }

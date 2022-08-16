@@ -4,7 +4,7 @@ import Button from '../../Common/Button/Button';
 
 import styles from './DisplayMedication.css';
 
-const DisplayMedication = ({ medication, onEditMedicationHandler, onDeleteMedicationHandler }) => {
+const DisplayMedication = ({ medication, editMedication, deleteMedication }) => {
   return (
     <>
       <h3 className={styles.medicationHeader}>Medication</h3>
@@ -23,8 +23,8 @@ const DisplayMedication = ({ medication, onEditMedicationHandler, onDeleteMedica
         </div>
       </div>
       <div className={styles.medicationButtonContainer}>
-        <Button className={styles.buttonEdit} value="Edit" onClickHandler={onEditMedicationHandler} />
-        <Button className={styles.buttonDelete} value="Delete" onClickHandler={onDeleteMedicationHandler} />
+        <Button className={styles.buttonEdit} value="Edit" onClickHandler={editMedication} />
+        <Button className={styles.buttonDelete} value="Delete" onClickHandler={deleteMedication} />
       </div>
     </>
   );
@@ -38,8 +38,8 @@ DisplayMedication.propTypes = {
     count: PropTypes.number,
     destinationCount: PropTypes.number,
   }).isRequired,
-  onEditMedicationHandler: PropTypes.func.isRequired,
-  onDeleteMedicationHandler: PropTypes.func.isRequired,
+  editMedication: PropTypes.func.isRequired,
+  deleteMedication: PropTypes.func.isRequired,
 };
 
 export default DisplayMedication;

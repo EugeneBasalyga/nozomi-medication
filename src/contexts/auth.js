@@ -24,10 +24,10 @@ export const AuthProvider = ({ children }) => {
       });
   }, []);
 
-  const login = async (emailAddress, password) => {
+  const login = async (email, password) => {
     try {
-      const data = await authApiInstance.login(emailAddress, password);
-      setUser({ emailAddress: data.emailAddress });
+      const data = await authApiInstance.login(email, password);
+      setUser({ email: data.email });
       setAccessToken(data.accessToken);
       return data.accessToken;
     } catch (err) {
@@ -38,10 +38,10 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
   };
 
-  const register = async (emailAddress, password, repeatPassword) => {
+  const register = async (email, password, repeatPassword) => {
     try {
-      const data = await authApiInstance.register(emailAddress, password, repeatPassword);
-      setUser({ emailAddress: data.emailAddress });
+      const data = await authApiInstance.register(email, password, repeatPassword);
+      setUser({ email: data.email });
       setAccessToken(data.accessToken);
       return data.accessToken;
     } catch (err) {
