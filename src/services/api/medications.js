@@ -11,7 +11,7 @@ class MedicationApi extends ApiService {
   }
 
   async createMedication(data) {
-    const response = await this.http.post('/', data);
+    const response = await this.http.post('', data);
     return response.data;
   }
 
@@ -21,7 +21,7 @@ class MedicationApi extends ApiService {
   }
 
   async getMedications() {
-    const response = await this.http.get('/');
+    const response = await this.http.get('');
     return response.data;
   }
 

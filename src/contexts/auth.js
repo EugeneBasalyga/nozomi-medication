@@ -35,7 +35,15 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      const data = await authApiInstance.logout();
+      setUser();
+      setAccessToken('');
+      return data;
+    } catch (err) {
+      return err.response.data;
+    }
   };
 
   const register = async (email, password, repeatPassword) => {

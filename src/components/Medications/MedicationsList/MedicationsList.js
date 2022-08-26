@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+import { useAuth } from '../../../contexts/auth';
 import MedicationListItem from '../MedicationListItem/MedicationListItem';
 import Button from '../../Common/Button/Button';
 
@@ -11,6 +12,8 @@ const MedicationsList = ({
   onIncrementMedicationCurrentCount,
   onDecrementMedicationCurrentCount,
 }) => {
+  const { logout } = useAuth();
+
   return (
     <>
       <div>
@@ -35,8 +38,10 @@ const MedicationsList = ({
             />
           ))}
       </div>
-
-      <Button className={styles.buttonAddNewMedication} value="Add New Medication" onClickHandler={onAddNewMedicationHandler} />
+      <div className={styles.buttonContainer}>
+        <Button className={styles.button} value="Add New Medication" onClickHandler={onAddNewMedicationHandler} />
+        <Button className={styles.button} value="Sign out" onClickHandler={logout} />
+      </div>
     </>
 
   );

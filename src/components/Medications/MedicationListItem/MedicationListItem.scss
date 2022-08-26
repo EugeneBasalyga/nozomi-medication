@@ -3,22 +3,18 @@
   background-color: #b19d8b;
   border: 1px solid #b19d8b;
   border-radius: 15px;
+  &:hover {
+    background-color: #967c65;
+    border: 1px solid #967c65
+  }
+  div {
+    padding: 5px;
+  }
 }
 
 .link {
   text-decoration: none;
   color: inherit;
-}
-
-.medicationsListItem {
-  &:hover {
-    background-color: #967c65;
-    border: 1px solid #967c65
-  }
-}
-
-.medicationsListItem div {
-  padding: 5px;
 }
 
 .counterContainer {
@@ -34,9 +30,6 @@
   margin-left: 10px;
   margin-right: 10px;
   padding: 8px;
-}
-
-.counterButton {
   &:hover {
     background: #967c65;
   }
