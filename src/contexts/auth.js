@@ -3,18 +3,18 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 
-import { useAccessToken } from '../hooks/useAccessToken';
+import localStorageApiInstance from '../services/localStorage';
+import sessionApiInstance from '../services/api/session';
 import authApiInstance from '../services/api/auth';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [accessToken, setAccessToken] = useAccessToken();
   const [isLoading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    authApiInstance.getCurrentUser()
+    sessionApiInstance.getCurrentSession()
       .then((data) => {
         setUser(data);
         setLoading(false);
@@ -28,7 +28,8 @@ export const AuthProvider = ({ children }) => {
     try {
       const data = await authApiInstance.login(email, password);
       setUser({ email: data.email });
-      setAccessToken(data.accessToken);
+      localStorageApiInstance.setAccessToken(data.accessToken);
+      localStorageApiInstance.setRefreshToken(data.refreshToken);
       return data.accessToken;
     } catch (err) {
       return err.response.data;
@@ -39,7 +40,8 @@ export const AuthProvider = ({ children }) => {
     try {
       const data = await authApiInstance.logout();
       setUser();
-      setAccessToken('');
+      localStorageApiInstance.removeAccessToken();
+      localStorageApiInstance.removeRefreshToken();
       return data;
     } catch (err) {
       return err.response.data;
@@ -50,7 +52,8 @@ export const AuthProvider = ({ children }) => {
     try {
       const data = await authApiInstance.register(email, password, repeatPassword);
       setUser({ email: data.email });
-      setAccessToken(data.accessToken);
+      localStorageApiInstance.setAccessToken(data.accessToken);
+      localStorageApiInstance.setRefreshToken(data.refreshToken);
       return data.accessToken;
     } catch (err) {
       return err.response.data;

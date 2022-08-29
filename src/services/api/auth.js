@@ -27,11 +27,6 @@ class AuthApi extends ApiService {
 
     return response.data;
   }
-
-  async getCurrentUser() {
-    const response = await this.http.get('/session/current');
-    return response.data;
-  }
 }
 
 const authApiInstance = new AuthApi();

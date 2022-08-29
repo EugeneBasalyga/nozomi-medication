@@ -8,18 +8,51 @@ class LocalStorageApi {
     LocalStorageApi.instance = this;
   }
 
-  getValue(key) {
+  getAccessToken() {
     try {
-      const value = this.window.localStorage.getItem(key);
+      const value = this.window.localStorage.getItem('accessToken');
       return value;
     } catch (err) {
       return err;
     }
   }
 
-  setValue(key, value) {
+  getRefreshToken() {
     try {
-      this.window.localStorage.setItem(key, value);
+      const value = this.window.localStorage.getItem('refreshToken');
+      return value;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  setAccessToken(value) {
+    try {
+      this.window.localStorage.setItem('accessToken', value);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  setRefreshToken(value) {
+    try {
+      this.window.localStorage.setItem('refreshToken', value);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  removeAccessToken() {
+    try {
+      this.window.localStorage.removeItem('accessToken');
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  removeRefreshToken() {
+    try {
+      this.window.localStorage.removeItem('refreshToken');
     } catch (err) {
       console.log(err);
     }
