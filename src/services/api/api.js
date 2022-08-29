@@ -19,7 +19,7 @@ class ApiService {
     this.http.addResponseInterceptor((response) => response, (error) => {
       const status = error.response ? error.response.status : null;
 
-      if (error.config.url.includes('/session/current')) {
+      if (error.config.baseURL.concat(error.config.url).includes('/session/current')) {
         return Promise.reject(error);
       }
 
