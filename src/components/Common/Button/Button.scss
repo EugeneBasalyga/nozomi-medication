@@ -1,7 +1,9 @@
 .button {
+    font: 0.7rem "Nunito", sans-serif;
     display: flex;
     justify-content: center;
+    align-items: center;
     cursor: pointer;
     color: #fff;
-    padding: 10px 20px;
+    height: 1.65rem;
 }

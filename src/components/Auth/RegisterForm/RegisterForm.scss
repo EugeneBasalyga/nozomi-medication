@@ -1,16 +1,40 @@
 .registerContainer {
-    width: 350px;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(7, 28, 221, 0.2), 0 6px 20px 0 rgba(7, 28, 221, 0.2);
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
 }
 
-.registerForm {
-    padding: 80px 80px 40px 80px;
+.registerPageTitle {
     text-align: left;
-    font-size: 1.3vmin;
+    color: #5c5c5c;
+    font-size: 1.2rem;
+}
+
+.registerBoxContainer {
+    width: 80vw;
+    height: 80vh;
+    background-color: #fefefe;
+    -webkit-box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6);
+    -moz-box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6);
+    box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerContentContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerForm {
+    font-size: 0.7rem;
+    width: 30%;
 }
 
 .buttonContainer {
@@ -18,25 +42,48 @@
     justify-content: center;
 }
 
-.formInput {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 .registerTitle {
-    font-size: calc(10px + 2vmin);
+    font-size: 1.2rem;
+    padding-bottom: 2rem;
     h4 {
         margin: 0;
-        margin-top: 30px;
     }
+}
+
+.input {
+    width: 100%;
+}
+
+.inputContainer {
+    padding-bottom: 0.5rem;
 }
 
 .buttonSignUp {
     background: #093dcc;
-    border: 1px solid #093dcc;
-    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    width: 75%;
+    margin-top: 1rem;
     &:hover {
         background: #1250fa;
-        border: 1px solid #1250fa;
+    }
+}
+
+.signInContainer {
+    display: flex;
+    flex-direction: row;
+    padding-top: 1rem;
+}
+
+.signInText {
+    font-size: 0.5rem;
+    color: grey;
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #169e2c;
+        &:hover {
+            color: #1ec239;
+        }
     }
 }

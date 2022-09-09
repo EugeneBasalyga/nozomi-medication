@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../../contexts/auth';
 import Input from '../../Common/Input/Input';
@@ -12,7 +12,6 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessages, setErrorMessages] = useState([]);
-  const navigate = useNavigate();
   const { login } = useAuth();
 
   const loginHandler = async (e) => {
@@ -29,11 +28,6 @@ const LoginForm = () => {
     }
   };
 
-  const registerOnClickHandler = (e) => {
-    e.preventDefault();
-    navigate(REGISTER);
-  };
-
   const emailOnChangeHandler = (e) => {
     setEmail(e.target.value);
   };
@@ -44,22 +38,29 @@ const LoginForm = () => {
 
   return (
     <div className={styles.loginContainer}>
-      <div className={styles.loginTitle}>
-        <h4>Sign In</h4>
+      <div className={styles.loginPageTitle}>
+        SIGN IN
       </div>
-      <div className={styles.loginForm}>
-        <form onSubmit={loginHandler}>
-          <Input name="email" inputContainerClassName={styles.formInput} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} required onChangeHandler={emailOnChangeHandler} />
-          <Input name="password" inputContainerClassName={styles.formInput} label="Password" type="password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} required onChangeHandler={passwordOnChangeHandler} />
-          <div className={styles.buttonContainer}>
-            <Button className={styles.buttonSignIn} value="Sign In" />
+      <div className={styles.loginBoxContainer}>
+        <div className={styles.loginContentContainer}>
+
+          <div className={styles.loginTitle}>
+            <h4>Sign in</h4>
           </div>
-        </form>
-      </div>
-      <div className={styles.signUpContainer}>
-        <i className={styles.signUpText}>Or Sign Up using</i>
-        <div className={styles.buttonContainer}>
-          <Button className={styles.buttonSignUp} value="Sign Up" onClickHandler={registerOnClickHandler} />
+          <div className={styles.loginForm}>
+            <Input name="email" inputContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} required onChangeHandler={emailOnChangeHandler} />
+            <Input name="password" inputContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Password" type="password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} required onChangeHandler={passwordOnChangeHandler} />
+            <div className={styles.buttonContainer}>
+              <Button className={styles.buttonSignIn} value="Sign In" onClickHandler={loginHandler} />
+            </div>
+          </div>
+          <div className={styles.signUpContainer}>
+            <div className={styles.signUpText}>
+              Don&apos;t have an account?&nbsp;
+              <Link to={REGISTER}>Sign up</Link>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
