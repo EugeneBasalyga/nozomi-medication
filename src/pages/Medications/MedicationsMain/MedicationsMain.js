@@ -63,24 +63,29 @@ const MedicationsMain = () => {
 
   return (
     <div className={styles.medicationsMainContainer}>
-      <div className={styles.medicationsListContainer}>
-        <MedicationsList
-          medications={medications}
-          onAddNewMedicationHandler={addNewMedication}
-          onIncrementMedicationCurrentCount={incrementMedicationCurrentCount}
-          onDecrementMedicationCurrentCount={decrementMedicationCurrentCount}
-        />
+      <div className={styles.medicationsMainPageTitle}>
+        MEDICATIONS
       </div>
-      { isShowNewMedication
-        ? (
-          <div className={styles.newMedicationContainer}>
-            <NewMedication
-              isNewMedication
-              saveMedication={saveNewMedication}
-              cancelEditMedication={cancelNewMedication}
-            />
-          </div>
-        ) : null }
+      <div className={styles.medicationsMainBoxContainer}>
+        <div className={styles.medicationsListContainer}>
+          <MedicationsList
+            medications={medications}
+            onAddNewMedicationHandler={addNewMedication}
+            onIncrementMedicationCurrentCount={incrementMedicationCurrentCount}
+            onDecrementMedicationCurrentCount={decrementMedicationCurrentCount}
+          />
+        </div>
+        { isShowNewMedication
+          ? (
+            <div className={styles.newMedicationContainer}>
+              <NewMedication
+                isNewMedication
+                saveMedication={saveNewMedication}
+                cancelEditMedication={cancelNewMedication}
+              />
+            </div>
+          ) : null }
+      </div>
     </div>
   );
 };

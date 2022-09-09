@@ -10,6 +10,7 @@
 }
 
 .loginBoxContainer {
+    position: relative;
     width: 80vw;
     height: 80vh;
     background-color: #fefefe;
@@ -86,4 +87,15 @@
             color: #5978ff;
         }
     }
+}
+
+.logoContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.logoImage{
+    width: 15rem;
+    height: 6rem;
 }

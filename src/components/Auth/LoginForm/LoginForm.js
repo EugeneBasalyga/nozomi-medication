@@ -6,6 +6,7 @@ import Input from '../../Common/Input/Input';
 import PasswordInput from '../../Common/PasswordInput/PasswordInput';
 import Button from '../../Common/Button/Button';
 import { REGISTER } from '../../../router/consts';
+import logo from '../../../assets/pfizer-logo.png';
 
 import styles from './LoginForm.scss';
 
@@ -43,6 +44,9 @@ const LoginForm = () => {
         SIGN IN
       </div>
       <div className={styles.loginBoxContainer}>
+        <div className={styles.logoContainer}>
+          <img className={styles.logoImage} src={logo} alt="Pfizer Logo" />
+        </div>
         <div className={styles.loginContentContainer}>
 
           <div className={styles.loginTitle}>
