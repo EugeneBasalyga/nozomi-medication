@@ -6,19 +6,10 @@
     font: 0.6rem "Nunito", sans-serif;
 }
 
-.inputContainer {
+.inputLabelContainer {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-}
-
-.inputPasswordContainer {
-    display: flex;
-    flex-direction: row;
-    i {
-        margin-left: -1rem;
-        cursor: pointer;
-    }
 }
 
 .inputError {

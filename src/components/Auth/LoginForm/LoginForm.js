@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../../contexts/auth';
 import Input from '../../Common/Input/Input';
+import PasswordInput from '../../Common/PasswordInput/PasswordInput';
 import Button from '../../Common/Button/Button';
 import { REGISTER } from '../../../router/consts';
 
@@ -48,8 +49,8 @@ const LoginForm = () => {
             <h4>Sign in</h4>
           </div>
           <div className={styles.loginForm}>
-            <Input name="email" inputContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} required onChangeHandler={emailOnChangeHandler} />
-            <Input name="password" inputContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Password" type="password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} required onChangeHandler={passwordOnChangeHandler} />
+            <Input name="email" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} required onChangeHandler={emailOnChangeHandler} />
+            <PasswordInput name="password" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} onChangeHandler={passwordOnChangeHandler} />
             <div className={styles.buttonContainer}>
               <Button className={styles.buttonSignIn} value="Sign In" onClickHandler={loginHandler} />
             </div>

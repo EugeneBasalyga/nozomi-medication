@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../../contexts/auth';
 import Input from '../../Common/Input/Input';
+import PasswordInput from '../../Common/PasswordInput/PasswordInput';
 import Button from '../../Common/Button/Button';
 import { LOGIN } from '../../../router/consts';
 
@@ -53,9 +54,9 @@ const RegisterForm = () => {
             <h4>Sign up with email</h4>
           </div>
           <div className={styles.registerForm}>
-            <Input name="email" inputContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} required onChangeHandler={emailOnChangeHandler} />
-            <Input name="password" inputContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Password" type="password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} required onChangeHandler={passwordOnChangeHandler} />
-            <Input name="repeatPassword" inputContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Repeat password" type="password" value={repeatPassword} errorMessage={errorMessages.find((error) => error.field === 'repeatPassword')} required onChangeHandler={repeatPasswordOnChangeHandler} />
+            <Input name="email" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} required onChangeHandler={emailOnChangeHandler} />
+            <PasswordInput name="password" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} onChangeHandler={passwordOnChangeHandler} />
+            <PasswordInput name="repeatPassword" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Repeat password" value={repeatPassword} errorMessage={errorMessages.find((error) => error.field === 'repeatPassword')} onChangeHandler={repeatPasswordOnChangeHandler} />
             <div className={styles.buttonContainer}>
               <Button className={styles.buttonSignUp} value="Sign Up" onClickHandler={registerHandler} />
             </div>

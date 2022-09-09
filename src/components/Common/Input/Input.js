@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
@@ -6,6 +5,7 @@ import styles from './Input.scss';
 
 const Input = ({
   name,
+  inputLabelContainerClassName,
   inputContainerClassName,
   inputClassName,
   label,
@@ -14,9 +14,8 @@ const Input = ({
   errorMessage,
   required,
   onChangeHandler,
+  children,
 }) => {
-  const [isShowPassword, setIsShowPassword] = useState(false);
-
   const getInputClassName = (field) => {
     if (field === errorMessage.field) {
       return clsx(styles.inputError, inputClassName);
@@ -31,30 +30,18 @@ const Input = ({
 
   return (
     <>
-      <div className={clsx(styles.inputContainer, inputContainerClassName)}>
+      <div className={clsx(styles.inputLabelContainer, inputLabelContainerClassName)}>
         <label htmlFor="input">{label}</label>
-
-        { type === 'password'
-          ? (
-            <div className={styles.inputPasswordContainer}>
-              <input
-                className={getInputClassName(name)}
-                type={isShowPassword ? 'text' : 'password'}
-                value={value}
-                required={required}
-                onChange={(e) => onChangeHandler(e, name)}
-              />
-              <i className={isShowPassword ? 'bi bi-eye' : 'bi bi-eye-slash'} onClick={() => setIsShowPassword(!isShowPassword)} />
-            </div>
-          ) : (
-            <input
-              className={getInputClassName(name)}
-              type={type}
-              value={value}
-              required={required}
-              onChange={(e) => onChangeHandler(e, name)}
-            />
-          )}
+        <div className={inputContainerClassName}>
+          <input
+            className={getInputClassName(name)}
+            type={type}
+            value={value}
+            required={required}
+            onChange={(e) => onChangeHandler(e, name)}
+          />
+          {children}
+        </div>
         {renderErrorMessage(name)}
       </div>
     </>
@@ -63,6 +50,7 @@ const Input = ({
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
+  inputLabelContainerClassName: PropTypes.string,
   inputContainerClassName: PropTypes.string,
   inputClassName: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -74,15 +62,18 @@ Input.propTypes = {
   }),
   required: PropTypes.bool,
   onChangeHandler: PropTypes.func.isRequired,
+  children: PropTypes.node,
 };
 
 Input.defaultProps = {
+  inputLabelContainerClassName: '',
   inputContainerClassName: '',
   inputClassName: '',
   type: 'text',
   value: '',
   errorMessage: {},
   required: true,
+  children: null,
 };
 
 export default Input;

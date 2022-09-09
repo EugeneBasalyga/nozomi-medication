@@ -42,10 +42,10 @@ const EditMedication = ({
   return (
     <>
       <h3 className={styles.medicationHeader}>Medication</h3>
-      <Input name="name" inputContainerClassName={styles.medicationInputContainer} label="Name:" value={newMedication.name} errorMessage={errorMessages.find((error) => error.field === 'name')} required onChangeHandler={medicationInputOnChangeHandler} />
-      <Input name="description" inputContainerClassName={styles.medicationInputContainer} label="Description:" value={newMedication.description} errorMessage={errorMessages.find((error) => error.field === 'description')} required onChangeHandler={medicationInputOnChangeHandler} />
-      <Input name="count" inputContainerClassName={styles.medicationInputContainer} label={isNewMedication ? 'Initial Count:' : 'Current Count:'} value={newMedication.count} errorMessage={errorMessages.find((error) => error.field === 'count')} required onChangeHandler={medicationInputOnChangeHandler} />
-      <Input name="destinationCount" inputContainerClassName={styles.medicationInputContainer} label="Destination Count:" value={newMedication.destinationCount} errorMessage={errorMessages.find((error) => error.field === 'destinationCount')} required onChangeHandler={medicationInputOnChangeHandler} />
+      <Input name="name" inputLabelContainerClassName={styles.medicationInputContainer} label="Name:" value={newMedication.name} errorMessage={errorMessages.find((error) => error.field === 'name')} required onChangeHandler={medicationInputOnChangeHandler} />
+      <Input name="description" inputLabelContainerClassName={styles.medicationInputContainer} label="Description:" value={newMedication.description} errorMessage={errorMessages.find((error) => error.field === 'description')} required onChangeHandler={medicationInputOnChangeHandler} />
+      <Input name="count" inputLabelContainerClassName={styles.medicationInputContainer} label={isNewMedication ? 'Initial Count:' : 'Current Count:'} value={newMedication.count} errorMessage={errorMessages.find((error) => error.field === 'count')} required onChangeHandler={medicationInputOnChangeHandler} />
+      <Input name="destinationCount" inputLabelContainerClassName={styles.medicationInputContainer} label="Destination Count:" value={newMedication.destinationCount} errorMessage={errorMessages.find((error) => error.field === 'destinationCount')} required onChangeHandler={medicationInputOnChangeHandler} />
       <div className={styles.medicationButtonContainer}>
         <Button className={styles.buttonSave} value="Save" onClickHandler={onSaveMedication} />
         <Button className={styles.buttonCancel} value="Cancel" onClickHandler={cancelEditMedication} />
