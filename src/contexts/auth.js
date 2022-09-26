@@ -1,11 +1,18 @@
 import {
-  useState, useEffect, useMemo, createContext, useContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  createContext,
+  useContext,
+  useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 
 import localStorageApiInstance from '../services/localStorage';
 import sessionApiInstance from '../services/api/session';
 import authApiInstance from '../services/api/auth';
+import AuthContextRef from './authRef';
 
 const AuthContext = createContext(null);
 
@@ -13,16 +20,47 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    sessionApiInstance.getCurrentSession()
-      .then((data) => {
-        setUser(data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+  const innerRef = useRef(AuthContextRef.getInstance());
+
+  const setUserContextData = useCallback(async () => {
+    const userData = await sessionApiInstance.getCurrentSession();
+    setUser(userData);
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+
+      const accessToken = localStorageApiInstance.getAccessToken();
+      const refreshToken = localStorageApiInstance.getRefreshToken();
+
+      if (!accessToken && !refreshToken) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        await setUserContextData();
+      } catch {
+        localStorageApiInstance.removeAccessToken();
+        localStorageApiInstance.removeRefreshToken();
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    innerRef.current.ready = true;
+    innerRef.current.reset = resetUserContextData;
+
+    fetchData();
+  }, [setUserContextData]);
+
+  const resetUserContextData = () => {
+    localStorageApiInstance.removeAccessToken();
+    localStorageApiInstance.removeRefreshToken();
+
+    setUser(null);
+  };
 
   const login = async (email, password) => {
     try {
@@ -39,9 +77,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       const data = await authApiInstance.logout();
-      setUser();
-      localStorageApiInstance.removeAccessToken();
-      localStorageApiInstance.removeRefreshToken();
+      resetUserContextData();
       return data;
     } catch (err) {
       return err.response.data;
@@ -68,6 +104,7 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         register,
+        setUserContextData,
       };
     },
     [user, isLoading],

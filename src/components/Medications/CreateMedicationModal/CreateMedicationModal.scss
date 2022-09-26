@@ -1,0 +1,45 @@
+.medicationInputLabelContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.medicationInput {
+  width: 8rem;
+}
+
+.createMedicationModalFooterButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.createMedicationModalContent {
+  width: 27.5rem;
+}
+
+.buttonSave {
+  background: rgb(12, 113, 207);
+  border: none;
+  color: whitesmoke;
+  border-radius: 10px;
+  width: 3rem;
+  &:hover {
+    background: rgb(32, 134, 230);
+  }
+}
+
+.buttonCancel {
+  background: rgb(212, 212, 212);
+  border: none;
+  color: black;
+  border-radius: 10px;
+  width: 3rem;
+  &:hover {
+    background: rgb(185, 185, 185)
+  }
+}

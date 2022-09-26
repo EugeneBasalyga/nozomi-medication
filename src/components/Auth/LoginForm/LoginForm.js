@@ -6,7 +6,6 @@ import Input from '../../Common/Input/Input';
 import PasswordInput from '../../Common/PasswordInput/PasswordInput';
 import Button from '../../Common/Button/Button';
 import { REGISTER } from '../../../router/consts';
-import logo from '../../../assets/pfizer-logo.png';
 
 import styles from './LoginForm.scss';
 
@@ -32,29 +31,27 @@ const LoginForm = () => {
 
   const emailOnChangeHandler = (e) => {
     setEmail(e.target.value);
+    const errorMessagesCopy = errorMessages.filter((el) => el.field !== 'email');
+    setErrorMessages(errorMessagesCopy);
   };
 
   const passwordOnChangeHandler = (e) => {
     setPassword(e.target.value);
+    const errorMessagesCopy = errorMessages.filter((el) => el.field !== 'password');
+    setErrorMessages(errorMessagesCopy);
   };
 
   return (
     <div className={styles.loginContainer}>
-      <div className={styles.loginPageTitle}>
-        SIGN IN
-      </div>
       <div className={styles.loginBoxContainer}>
-        <div className={styles.logoContainer}>
-          <img className={styles.logoImage} src={logo} alt="Pfizer Logo" />
-        </div>
         <div className={styles.loginContentContainer}>
 
           <div className={styles.loginTitle}>
             <h4>Sign in</h4>
           </div>
           <div className={styles.loginForm}>
-            <Input name="email" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} required onChangeHandler={emailOnChangeHandler} />
-            <PasswordInput name="password" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} onChangeHandler={passwordOnChangeHandler} />
+            <Input name="email" inputLabelContainerClassName={styles.inputLabelContainer} inputClassName={styles.input} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} onChangeHandler={emailOnChangeHandler} />
+            <PasswordInput name="password" inputLabelContainerClassName={styles.inputLabelContainer} inputClassName={styles.input} label="Password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} onChangeHandler={passwordOnChangeHandler} />
             <div className={styles.buttonContainer}>
               <Button className={styles.buttonSignIn} value="Sign In" onClickHandler={loginHandler} />
             </div>

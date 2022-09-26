@@ -1,9 +1,21 @@
 .medicationsLayout {
+    position: relative;
     text-align: center;
-    background-color: #d8d8d8;
+    background-color: #fdfdff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.logoContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+  
+.logoImage{
+    width: 12rem;
+    height: 5rem;
 }

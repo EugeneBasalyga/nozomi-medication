@@ -1,47 +1,47 @@
 import PropTypes from 'prop-types';
 
-import { useAuth } from '../../../contexts/auth';
 import MedicationListItem from '../MedicationListItem/MedicationListItem';
-import Button from '../../Common/Button/Button';
 
 import styles from './MedicationsList.scss';
 
 const MedicationsList = ({
   medications,
-  onAddNewMedicationHandler,
   onIncrementMedicationCurrentCount,
   onDecrementMedicationCurrentCount,
 }) => {
-  const { logout } = useAuth();
-
   return (
     <>
-      <div>
-        {medications.sort((firstItem, secItem) => secItem.createdAt - firstItem.createdAt)
-          .filter((item) => item.count !== item.destinationCount).map((item) => (
-            <MedicationListItem
-              key={item.id}
-              item={item}
-              onIncrementMedicationCurrentCount={onIncrementMedicationCurrentCount}
-              onDecrementMedicationCurrentCount={onDecrementMedicationCurrentCount}
-            />
-          ))}
-        {medications.sort((firstItem, secItem) => secItem.updatedAt - firstItem.updatedAt)
-          .filter((item) => item.count === item.destinationCount).map((item) => (
-            <MedicationListItem
-              medicationItemClassName={styles.medicationItemFulfilled}
-              medicationItemCounterButtonsClassName={styles.medicationItemCounterButtonFulfilled}
-              key={item.id}
-              item={item}
-              onIncrementMedicationCurrentCount={onIncrementMedicationCurrentCount}
-              onDecrementMedicationCurrentCount={onDecrementMedicationCurrentCount}
-            />
-          ))}
-      </div>
-      <div className={styles.buttonContainer}>
-        <Button className={styles.button} value="Add New Medication" onClickHandler={onAddNewMedicationHandler} />
-        <Button className={styles.button} value="Sign out" onClickHandler={logout} />
-      </div>
+      <table className={styles.medicationTable}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th className={styles.medicationTableDescriptionColumn}>Description</th>
+            <th>Current count</th>
+            <th>Destination count</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {medications.sort((firstItem, secItem) => secItem.createdAt - firstItem.createdAt)
+            .filter((item) => item.count !== item.destinationCount).map((item) => (
+              <MedicationListItem
+                key={item.id}
+                item={item}
+                onIncrementMedicationCurrentCount={onIncrementMedicationCurrentCount}
+                onDecrementMedicationCurrentCount={onDecrementMedicationCurrentCount}
+              />
+            ))}
+          {medications.sort((firstItem, secItem) => secItem.createdAt - firstItem.createdAt)
+            .filter((item) => item.count === item.destinationCount).map((item) => (
+              <MedicationListItem
+                key={item.id}
+                item={item}
+                onIncrementMedicationCurrentCount={onIncrementMedicationCurrentCount}
+                onDecrementMedicationCurrentCount={onDecrementMedicationCurrentCount}
+              />
+            ))}
+        </tbody>
+      </table>
     </>
 
   );
@@ -55,7 +55,6 @@ MedicationsList.propTypes = {
     count: PropTypes.number,
     destinationCount: PropTypes.number,
   })).isRequired,
-  onAddNewMedicationHandler: PropTypes.func.isRequired,
   onIncrementMedicationCurrentCount: PropTypes.func.isRequired,
   onDecrementMedicationCurrentCount: PropTypes.func.isRequired,
 };

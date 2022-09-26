@@ -6,7 +6,6 @@ import Input from '../../Common/Input/Input';
 import PasswordInput from '../../Common/PasswordInput/PasswordInput';
 import Button from '../../Common/Button/Button';
 import { LOGIN } from '../../../router/consts';
-import logo from '../../../assets/pfizer-logo.png';
 
 import styles from './RegisterForm.scss';
 
@@ -33,34 +32,34 @@ const RegisterForm = () => {
 
   const emailOnChangeHandler = (e) => {
     setEmail(e.target.value);
+    const errorMessagesCopy = errorMessages.filter((el) => el.field !== 'email');
+    setErrorMessages(errorMessagesCopy);
   };
 
   const passwordOnChangeHandler = (e) => {
     setPassword(e.target.value);
+    const errorMessagesCopy = errorMessages.filter((el) => el.field !== 'password');
+    setErrorMessages(errorMessagesCopy);
   };
 
   const repeatPasswordOnChangeHandler = (e) => {
     setRepeatPassword(e.target.value);
+    const errorMessagesCopy = errorMessages.filter((el) => el.field !== 'repeatPassword');
+    setErrorMessages(errorMessagesCopy);
   };
 
   return (
     <div className={styles.registerContainer}>
-      <div className={styles.registerPageTitle}>
-        SIGN UP WITH EMAIL
-      </div>
       <div className={styles.registerBoxContainer}>
-        <div className={styles.logoContainer}>
-          <img className={styles.logoImage} src={logo} alt="Pfizer Logo" />
-        </div>
         <div className={styles.registerContentContainer}>
 
           <div className={styles.registerTitle}>
             <h4>Sign up with email</h4>
           </div>
           <div className={styles.registerForm}>
-            <Input name="email" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} required onChangeHandler={emailOnChangeHandler} />
-            <PasswordInput name="password" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} onChangeHandler={passwordOnChangeHandler} />
-            <PasswordInput name="repeatPassword" inputLabelContainerClassName={styles.inputContainer} inputClassName={styles.input} label="Repeat password" value={repeatPassword} errorMessage={errorMessages.find((error) => error.field === 'repeatPassword')} onChangeHandler={repeatPasswordOnChangeHandler} />
+            <Input name="email" inputLabelContainerClassName={styles.inputLabelContainer} inputClassName={styles.input} label="Email Address" type="email" value={email} errorMessage={errorMessages.find((error) => error.field === 'email')} onChangeHandler={emailOnChangeHandler} />
+            <PasswordInput name="password" inputLabelContainerClassName={styles.inputLabelContainer} inputClassName={styles.input} label="Password" value={password} errorMessage={errorMessages.find((error) => error.field === 'password')} onChangeHandler={passwordOnChangeHandler} />
+            <PasswordInput name="repeatPassword" inputLabelContainerClassName={styles.inputLabelContainer} inputClassName={styles.input} label="Repeat password" value={repeatPassword} errorMessage={errorMessages.find((error) => error.field === 'repeatPassword')} onChangeHandler={repeatPasswordOnChangeHandler} />
             <div className={styles.buttonContainer}>
               <Button className={styles.buttonSignUp} value="Sign Up" onClickHandler={registerHandler} />
             </div>

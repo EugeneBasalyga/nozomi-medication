@@ -1,45 +1,73 @@
-import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Button from '../../Common/Button/Button';
 import { MEDICATIONS } from '../../../router/consts';
 
 import styles from './MedicationListItem.scss';
 
 const MedicationListItem = ({
-  medicationItemClassName,
-  medicationItemCounterButtonsClassName,
   item,
   onIncrementMedicationCurrentCount,
   onDecrementMedicationCurrentCount,
 }) => {
+  const navigate = useNavigate();
+
+  const onClickMedicationItem = () => {
+    navigate(`${MEDICATIONS}/${item.id}`);
+  };
+
   return (
-    <Link to={`${MEDICATIONS}/${item.id}`} className={styles.link}>
-      <div className={clsx(styles.medicationsListItem, medicationItemClassName)}>
-        <div>
-          {`Name: ${item.name}`}
-        </div>
-        <div>
-          {`Description: ${item.description}`}
-        </div>
-        <div className={styles.counterContainer}>
-          Current count:
-          {item.count !== item.destinationCount ? <Button className={clsx(styles.counterButton, medicationItemCounterButtonsClassName)} value="+" onClickHandler={(e) => onIncrementMedicationCurrentCount(e, item)} /> : null}
-          {` ${item.count} `}
-          {item.count !== 0 ? <Button className={clsx(styles.counterButton, medicationItemCounterButtonsClassName)} value="-" onClickHandler={(e) => onDecrementMedicationCurrentCount(e, item)} /> : null}
-        </div>
-        <div>
-          {`Destination count: ${item.destinationCount}`}
-        </div>
-      </div>
-    </Link>
+    <>
+      <tr className={styles.medicationListItem} onClick={onClickMedicationItem}>
+        <td className={styles.medicationTableDescriptionColumn}>{item.name}</td>
+        <td>{item.description}</td>
+        <td>{item.count}</td>
+        <td>{item.destinationCount}</td>
+        <td>
+          {item.count === item.destinationCount
+            ? (
+              <div className={styles.icons}>
+                <div>
+                  Completed
+                </div>
+                <div className={styles.iconContainer}>
+                  <i className={`bi bi-check-square ${styles.iconGreen}`} />
+                </div>
+              </div>
+            )
+            : (
+              <div className={styles.icons}>
+                <div>
+                  Not completed
+                </div>
+                <div className={styles.iconContainer}>
+                  <i className={`bi bi-x-square ${styles.iconRed}`} />
+                </div>
+              </div>
+            )}
+        </td>
+        <td>
+          <div className={styles.icons}>
+            {item.count !== item.destinationCount
+              ? (
+                <div className={styles.iconContainer}>
+                  <i className={`bi bi-plus-circle ${styles.iconPlusDash} fa-lg`} onClick={(e) => onIncrementMedicationCurrentCount(e, item)} />
+                </div>
+              ) : null}
+            {item.count !== 0
+              ? (
+                <div className={styles.iconContainer}>
+                  <i className={`bi bi-dash-circle ${styles.iconPlusDash}`} onClick={(e) => onDecrementMedicationCurrentCount(e, item)} />
+                </div>
+              ) : null}
+          </div>
+        </td>
+      </tr>
+    </>
   );
 };
 
 MedicationListItem.propTypes = {
-  medicationItemClassName: PropTypes.string,
-  medicationItemCounterButtonsClassName: PropTypes.string,
   item: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
@@ -49,11 +77,6 @@ MedicationListItem.propTypes = {
   }).isRequired,
   onIncrementMedicationCurrentCount: PropTypes.func.isRequired,
   onDecrementMedicationCurrentCount: PropTypes.func.isRequired,
-};
-
-MedicationListItem.defaultProps = {
-  medicationItemClassName: '',
-  medicationItemCounterButtonsClassName: '',
 };
 
 export default MedicationListItem;

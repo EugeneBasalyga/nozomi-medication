@@ -117,6 +117,7 @@ module.exports = function (webpackEnv) {
         options: {
           importLoaders: 1,
           modules: {
+            auto: (resourcePath) => !resourcePath.includes('node_modules'),
             localIdentName: '[name]__[local]___[hash:base64:5]',
           },
         },

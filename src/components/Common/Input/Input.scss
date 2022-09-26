@@ -1,15 +1,23 @@
+.inputLabelContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.inputWrapperContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .input {
     height: 1.2rem;
     border: none;
     background-color: #f1f1f1;
     border-radius: 5px;
     font: 0.6rem "Nunito", sans-serif;
-}
-
-.inputLabelContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+    &:disabled {
+        color: #757575;
+    }
 }
 
 .inputError {
@@ -20,9 +28,27 @@
     font: 0.6rem "Nunito", sans-serif;
 }
 
+.textArea {
+    resize: none;
+    border: none;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    font: 0.6rem "Nunito", sans-serif;
+    &:disabled {
+        color: #757575;
+    }
+}
+
+.textAreaError {
+    resize: none;
+    border: 1.5px solid red;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    font: 0.6rem "Nunito", sans-serif;
+}
+
 .errorMessage {
     color: red;
     padding-top: 0.4rem;
     font-size: 0.5rem;
-    text-align: center;
 }

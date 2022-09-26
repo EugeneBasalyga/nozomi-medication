@@ -1,14 +1,124 @@
 .medicationObjectPageContainer {
-  min-height: inherit;
-  align-items: center;
-  justify-content: center;
+  width: 50vw;
+  height: 50vh;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
 }
 
+.medicationObjectPageHeaderContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid #555555;
+}
+
+.medicationObjectPageHeader {
+  align-self: flex-end;
+  padding-left: 1.5rem;
+  font-size: 1.2rem;
+  h4 {
+    margin: 0;
+  }
+}
+
+.medicationObjectPageHeaderButtons {
+  width: 7rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: flex-end;
+  padding-right: 1.5rem;
+  padding-bottom: 0.2rem;
+}
+
+.buttonSignOut {
+  background: #991515;
+  border: none;
+  border-radius: 20px;
+  height: 1.8rem;
+  flex: auto;
+  &:hover {
+      background: #bb2f2f;
+  }
+}
+
 .medicationObjectPageForm {
-  width: 700px;
-  background-color: rgb(211, 221, 230);
-  border-radius: 15px;
-  margin-left: 20px;
+  flex: 6;
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.medicationInputLabelContainer {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.medicationInput {
+  width: 8rem;
+}
+
+.medicationButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.buttonSave {
+  background: rgb(12, 113, 207);
+  border: none;
+  color: whitesmoke;
+  border-radius: 10px;
+  width: 3rem;
+  &:hover {
+    background: rgb(32, 134, 230);
+  }
+}
+
+.buttonCancel {
+  background: rgb(212, 212, 212);
+  border: none;
+  color: black;
+  border-radius: 10px;
+  width: 3rem;
+  &:hover {
+    background: rgb(185, 185, 185)
+  }
+}
+
+.buttonEdit {
+  background: rgb(90, 90, 90);
+  border: none;
+  color: whitesmoke;
+  border-radius: 10px;
+  width: 3rem;
+  &:hover {
+    background: rgb(115, 115, 115);
+  }
+}
+
+.buttonDelete {
+  background: #991515;
+  border: none;
+  color: whitesmoke;
+  border-radius: 10px;
+  width: 3rem;
+  &:hover {
+    background: #bb2f2f;
+  }
+}
+
+.medicationSuccessfullAlert {
+  font-family: "Nunito", sans-serif !important;
 }

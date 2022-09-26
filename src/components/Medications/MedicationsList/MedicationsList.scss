@@ -1,34 +1,31 @@
-.buttonContainer {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  padding: 10px;
-}
-
-.button {
-  background: #197080;
-  border: none;
-  color: black;
-  font-size: 1.5vmin;
-  border-radius: 10px;
-  &:hover {
-    background: #1f8192;
-    border: none;
+.medicationTable {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  thead {
+    tr {
+      color: #000000;
+      text-align: left;
+    }
+  }
+  th {
+    padding-bottom: 1.5rem;
+    padding-left: 0.5rem;
+  }
+  td {
+    font-size: 0.8rem;
+    padding-top: 2rem;
+    padding-left: 0.5rem;
+    word-wrap: break-word;
+  }
+  tbody {
+    tr {
+      text-align: left;
+      border-bottom: 1px solid #e4e4e4;
+    }
   }
 }
 
-.medicationItemFulfilled {
-  background-color: #417759;
-  border: 1px solid #417759;
-  &:hover {
-    background-color: #538668;
-    border: 1px solid #538668
-  }
-}
-
-.medicationItemCounterButtonFulfilled {
-  background: #417759;
-  &:hover {
-    background: #538668;
-  }
+.medicationTableDescriptionColumn {
+  width: 30%;
 }

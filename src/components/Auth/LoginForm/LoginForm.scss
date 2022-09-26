@@ -3,20 +3,12 @@
     flex-direction: column;
 }
 
-.loginPageTitle {
-    text-align: left;
-    color: #5c5c5c;
-    font-size: 1.2rem;
-}
-
 .loginBoxContainer {
-    position: relative;
-    width: 80vw;
-    height: 80vh;
-    background-color: #fefefe;
-    -webkit-box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6);
-    -moz-box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6);
-    box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6);
+    width: 50vw;
+    height: 50vh;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.1);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -35,7 +27,7 @@
 
 .loginForm {
     font-size: 0.7rem;
-    width: 30%;
+    width: 50%;
 }
 
 .buttonContainer {
@@ -55,7 +47,7 @@
     width: 100%;
 }
 
-.inputContainer {
+.inputLabelContainer {
     padding-bottom: 0.5rem;
 }
 
@@ -87,15 +79,4 @@
             color: #5978ff;
         }
     }
-}
-
-.logoContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.logoImage{
-    width: 15rem;
-    height: 6rem;
 }
